@@ -41,6 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TodoItemService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebDemo.Entities\WebDemo.Entities.csproj">
+      <Project>{72960503-1FBB-47FF-87FE-43FF19E589CA}</Project>
+      <Name>WebDemo.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebDemo.Repositories\WebDemo.Repositories.csproj">
+      <Project>{F9183487-B307-4026-88E9-30D52549CC23}</Project>
+      <Name>WebDemo.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
