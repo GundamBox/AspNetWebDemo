@@ -3,8 +3,59 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{EF52D51C-F75F-45CF-BB75-05480ECB5546}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{E6CCB3EA-2819-43CC-9395-3B6E4A369C93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{E5479A39-F394-4896-BB13-5A989B767B68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemo.Services", "WebDemo.Services\WebDemo.Services.csproj", "{86358978-C82F-4A28-8041-87BA635D3277}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemo.Entities", "WebDemo.Entities\WebDemo.Entities.csproj", "{72960503-1FBB-47FF-87FE-43FF19E589CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemo.Repositories", "WebDemo.Repositories\WebDemo.Repositories.csproj", "{F9183487-B307-4026-88E9-30D52549CC23}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebDemo.Database", "WebDemo.Database\WebDemo.Database.sqlproj", "{FADF928D-D358-44D9-ACBC-C52A3B1CE441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebDemo.Web", "WebDemo.Web\WebDemo.Web.csproj", "{3C8200F3-4DB4-4321-AE71-566DC46B8963}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86358978-C82F-4A28-8041-87BA635D3277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86358978-C82F-4A28-8041-87BA635D3277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86358978-C82F-4A28-8041-87BA635D3277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86358978-C82F-4A28-8041-87BA635D3277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72960503-1FBB-47FF-87FE-43FF19E589CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72960503-1FBB-47FF-87FE-43FF19E589CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72960503-1FBB-47FF-87FE-43FF19E589CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72960503-1FBB-47FF-87FE-43FF19E589CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9183487-B307-4026-88E9-30D52549CC23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9183487-B307-4026-88E9-30D52549CC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9183487-B307-4026-88E9-30D52549CC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9183487-B307-4026-88E9-30D52549CC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3C8200F3-4DB4-4321-AE71-566DC46B8963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C8200F3-4DB4-4321-AE71-566DC46B8963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C8200F3-4DB4-4321-AE71-566DC46B8963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C8200F3-4DB4-4321-AE71-566DC46B8963}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{86358978-C82F-4A28-8041-87BA635D3277} = {E6CCB3EA-2819-43CC-9395-3B6E4A369C93}
+		{72960503-1FBB-47FF-87FE-43FF19E589CA} = {EF52D51C-F75F-45CF-BB75-05480ECB5546}
+		{F9183487-B307-4026-88E9-30D52549CC23} = {EF52D51C-F75F-45CF-BB75-05480ECB5546}
+		{FADF928D-D358-44D9-ACBC-C52A3B1CE441} = {EF52D51C-F75F-45CF-BB75-05480ECB5546}
+		{3C8200F3-4DB4-4321-AE71-566DC46B8963} = {E5479A39-F394-4896-BB13-5A989B767B68}
 	EndGlobalSection
 EndGlobal
