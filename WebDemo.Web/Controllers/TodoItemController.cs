@@ -13,25 +13,33 @@ namespace WebDemo.Web.Controllers
             _service = new TodoItemService();
         }
         // GET: api/TodoItem
-        public IEnumerable<TodoItemGetViewModel> Get()
+        public IHttpActionResult Get()
         {
-            return _service.GetAll();
+            return Ok(_service.GetAll());
         }
         // GET: api/TodoItem/5
-        public TodoItemGetViewModel Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return _service.Get(id);
+            return Ok(_service.Get(id));
         }
         // POST: api/TodoItem
-        public TodoItemGetViewModel Post([FromBody]TodoItemCreateViewModel value)
+        public IHttpActionResult Post([FromBody]TodoItemCreateViewModel value)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             TodoItemGetViewModel model = _service.Create(value);
-            return model;
+            return CreatedAtRoute("DefaultApi", new { model.Id }, model);
         }
         // PUT: api/TodoItem/5
-        public void Put(int id, [FromBody]TodoItemUpdateViewModel value)
+        public IHttpActionResult Put(int id, [FromBody]TodoItemUpdateViewModel value)
         {
-            _service.Update(id, value);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(_service.Update(id, value));
         }
         // DELETE: api/TodoItem/5
         public void Delete(int id)

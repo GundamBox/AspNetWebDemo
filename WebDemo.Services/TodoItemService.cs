@@ -55,7 +55,7 @@ namespace WebDemo.Services
             });
             return result;
         }
-        public void Update(int id, TodoItemUpdateViewModel value)
+        public TodoItemGetViewModel Update(int id, TodoItemUpdateViewModel value)
         {
             var model = _repo.Get(x => x.Id.Equals(id));
             if (value.Content != null)
