@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WebDemo.Entities;
 using WebDemo.Entities.ViewModels;
 using WebDemo.Repositories;
 
@@ -19,7 +18,8 @@ namespace WebDemo.Services
         {
             TodoItem item = new TodoItem
             {
-                Content = value.Content
+                Content = value.Content,
+                CreatedAt = DateTime.Now
             };
             var model = _repo.Create(item);
             var result = new TodoItemGetViewModel

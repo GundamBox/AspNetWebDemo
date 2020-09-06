@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using WebDemo.Entities.ViewModels;
 using WebDemo.Services;
@@ -12,7 +8,8 @@ namespace WebDemo.Web.Controllers
     public class TodoItemController : ApiController
     {
         private readonly TodoItemService _service;
-        public TodoItemController() {
+        public TodoItemController()
+        {
             _service = new TodoItemService();
         }
         // GET: api/TodoItem

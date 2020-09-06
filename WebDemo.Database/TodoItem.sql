@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[TodoItem]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY, 
+    [Content] NVARCHAR(256) NOT NULL, 
+    [IsCompleted] BIT NOT NULL DEFAULT 0, 
+    [IsSoftDeleted] BIT NOT NULL DEFAULT 0, 
+    [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE()
+)

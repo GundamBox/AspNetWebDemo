@@ -1,94 +1,86 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using WebDemo.Entities.ViewModels;
+using WebDemo.Entities;
 
 namespace WebDemo.Repositories
 {
     public class TodoItemRepository
     {
-        private static List<TodoItem> data = new List<TodoItem>() {
-            new TodoItem {
-                Id = 1,
-                Content = "Todo 1",
-                IsCompleted = true,
-                IsSoftDeleted = false,
-                CreatedAt = new DateTime(2020,9,6,14,00,00)
-            },
-            new TodoItem {
-                Id = 2,
-                Content = "Todo 2",
-                IsCompleted = false,
-                IsSoftDeleted = false,
-                CreatedAt = new DateTime(2020,9,6,14,30,00)
-            },
-            new TodoItem {
-                Id = 3,
-                Content = "Todo 3",
-                IsCompleted = false,
-                IsSoftDeleted = false,
-                CreatedAt = new DateTime(2020,9,6,15,00,00)
-            },
-        };
+        protected AspNetWebDemoDbEntities _context;
+        public DbContext Context
+        {
+            get { return _context; }
+        }
+        public TodoItemRepository()
+        {
+            _context = new AspNetWebDemoDbEntities();
+        }
         #region Create
         public TodoItem Create(TodoItem obj)
         {
-            int id = data.Max(x => x.Id);
-            TodoItem model = new TodoItem
+            if (obj == null)
             {
-                Id = id + 1,
-                Content = obj.Content,
-                IsCompleted = false,
-                IsSoftDeleted = false,
-                CreatedAt = DateTime.Now
-            };
-            data.Add(model);
-            return model;
+                throw new ArgumentNullException("Create data is null.");
+            }
+            else
+            {
+                _context.Set<TodoItem>().Add(obj);
+                _context.SaveChanges();
+                return obj;
+            }
         }
         #endregion
         #region Read
         public TodoItem Get(int id)
         {
-            TodoItem model = data.FirstOrDefault(x => x.Id.Equals(id));
+            var model = this.Get(x => x.Id.Equals(id));
             return model;
         }
         public TodoItem Get(Func<TodoItem, bool> predicate)
         {
-            TodoItem model = data.FirstOrDefault(predicate);
+            var model = _context.Set<TodoItem>().Where(x => !x.IsSoftDeleted).FirstOrDefault(predicate);
             return model;
         }
         public List<TodoItem> GetAll()
         {
-            return data.Where(x => !x.IsSoftDeleted).ToList();
+            var models = _context.Set<TodoItem>().Where(x => !x.IsSoftDeleted).ToList();
+            return models;
         }
         #endregion
         #region Update
         public TodoItem Update(TodoItem obj)
         {
-            TodoItem model = this.Get(obj.Id);
-            model.Content = obj.Content;
-            model.IsCompleted = obj.IsCompleted;
-            return model;
+            if (obj == null)
+            {
+                throw new ArgumentNullException("Update data is null.");
+            }
+            else
+            {
+                _context.Entry(obj).State = EntityState.Modified;
+                _context.SaveChanges();
+                return obj;
+            }
         }
         #endregion
         #region Delete
         public void Delete(int id)
         {
-            TodoItem model = this.Get(id);
+            var model = this.Get(id);
             model.IsSoftDeleted = true;
+            this.Update(model);
         }
         public void Delete(TodoItem obj)
         {
-            TodoItem model = this.Get(obj.Id);
-            model.IsSoftDeleted = true;
+            obj.IsSoftDeleted = true;
+            this.Update(obj);
         }
         public void Delete(Func<TodoItem, bool> predicate)
         {
-            TodoItem model = this.Get(predicate);
+            var model = this.Get(predicate);
             model.IsSoftDeleted = true;
+            this.Update(model);
         }
         #endregion
     }
