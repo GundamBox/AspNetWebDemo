@@ -33,7 +33,7 @@ namespace WebDemo.Services
         }
         public TodoItemGetViewModel Get(int id)
         {
-            var model = _repo.Get(id);
+            var model = _repo.Get(x => x.Id.Equals(id));
             var result = new TodoItemGetViewModel
             {
                 Id = model.Id,
@@ -57,7 +57,7 @@ namespace WebDemo.Services
         }
         public void Update(int id, TodoItemUpdateViewModel value)
         {
-            var model = _repo.Get(id);
+            var model = _repo.Get(x => x.Id.Equals(id));
             if (value.Content != null)
             {
                 model.Content = value.Content;
@@ -70,7 +70,7 @@ namespace WebDemo.Services
         }
         public void Delete(int id)
         {
-            _repo.Delete(id);
+            _repo.Delete(x => x.Id.Equals(id));
         }
     }
 }
