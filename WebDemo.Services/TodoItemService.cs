@@ -67,6 +67,14 @@ namespace WebDemo.Services
                 model.IsCompleted = value.IsCompleted.Value;
             }
             _repo.Update(model);
+
+            return new TodoItemGetViewModel
+            {
+                Id = model.Id,
+                Content = model.Content,
+                IsCompleted = model.IsCompleted,
+                CreatedAt = model.CreatedAt
+            };
         }
         public void Delete(int id)
         {
